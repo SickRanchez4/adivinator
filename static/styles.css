@@ -24,6 +24,7 @@ body{
     /* border: 2px solid green; */
 }
 .barnav{
+    margin-top: 30px;
     width: 100%;
     font-family: 'Righteous', cursive;
     font-size: 2em;
@@ -45,11 +46,57 @@ nav ul{
     border-radius: 10px;
     background-color:white;
 }
-.adivinator{
-    display: flex;
-    justify-content: center;
+.content{
+    display: block;
+    text-align: center;
+    margin-bottom: 70px;
+}
+.Adivinator{
+    display: block;
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 70px;
+}
+.inicio{
     margin-bottom: 40px;
 }
+.inicio input{
+    width: 100px;
+}
+#start{
+    display: block;
+}
+.pregunta{
+    margin-bottom: 40px;
+}
+.pregunta input{
+    width: 100px;
+}
+#preguntando{
+    display: block;
+}
+.Newanimal{
+    display: block;
+    font-size: 1.5em;
+}
+.Newanimal div{
+    margin-bottom: 20px;
+}
+#whatname{
+    display: block;
+}
+
+#whatdifference{
+    display: block;
+}
+.DiferenciaAns input{
+    display: inline-block;
+    width: 70px;
+}
+#differenceans{
+    display: block;
+}
+
 .footer{
     display: flex;
     justify-content: space-between;
@@ -60,4 +107,15 @@ nav ul{
 .bout{
     font-size: 2em;
     text-align: center;
+    margin-bottom: 140px;
+}
+
+/* Media Queries */
+@media screen and (max-width: 480px){
+    .header img{
+        display: none;
+    }
+    .footer{
+        font-size: 80%;
+    }
 }
