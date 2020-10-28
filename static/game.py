@@ -9,5 +9,5 @@ def Gamin():
     node.setData('Perro')
     Tree = Arbol()
     Tree.setRoot(node)
-
-    print(Tree.getRaizData())
+    a = Tree.getRaizData()
+    return print(a)
