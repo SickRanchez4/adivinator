@@ -27,4 +27,9 @@ class Nodo:
     def setRight(self, r):
         self.right = r
 
-    
+#   MÉTODOS
+    def esHoja(self):
+        if self.getRight() is None and self.getLeft() is None:
+            return True
+        else:
+            return False

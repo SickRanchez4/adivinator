@@ -57,29 +57,38 @@ nav ul{
     font-weight: bold;
     margin-bottom: 70px;
 }
-.inicio{
+#inicio{
     margin-bottom: 40px;
 }
-.inicio input{
+#inicio input{
     width: 100px;
 }
 #start{
     display: block;
 }
-.pregunta{
+#pregunta{
     margin-bottom: 40px;
+    display: none;
 }
-.pregunta input{
+#pregunta input{
     width: 100px;
 }
 #preguntando{
     display: block;
 }
-.Newanimal{
-    display: block;
+#label1{
+    display: none;
+    color: green;
+}
+#label2{
+    display: none;
+    color: red;
+}
+#Newanimal{
+    display: none;
     font-size: 1.5em;
 }
-.Newanimal div{
+#Newanimal div{
     margin-bottom: 20px;
 }
 #whatname{
@@ -98,11 +107,15 @@ nav ul{
 }
 
 .footer{
+    /* position:fixed;
+    left:0px;
+    bottom:0px; */
     display: flex;
     justify-content: space-between;
     padding: 1em;
     background-color: black;
     color: white;
+    width: 100%;
 }
 .bout{
     font-size: 2em;

@@ -1,34 +1,44 @@
-{% include 'partials/header.html' %}
-
+{% extends "layout.html" %}
+{% block body %}
     <div class="content">
         <form class="Adivinator">
-            <div class="inicio">
+            <div id="inicio">
             <label id="start">ESTÁS PENSANDO EN UN ANIMAL?</label>
-            <a href="/game"><input type="button" value="SI"></a>
+            <input type="button" onclick="toggleQuest()" value="SI">
             </div>
-            <div class="pregunta">
-            <label id="preguntando">Es un X?</label>
-            <input type="button" value="SI">
-            <input type="button" value="NO">
+            <div id="pregunta">
+            {% if tree.getRoot().getLeft() != None %}
+                <label id="preguntando">El animal {{ tree }} ?</label>
+                <form id="askin">
+                <input type="submit" value="NO" formaction="/goLeft"> <!-- /goLeft -->
+                <input type="submit" value="SI" formaction="/goRight"><!-- /goRight -->
+                </form>
+            {% endif %}
+
+            {% if tree.getRoot().getLeft() == None %}
+            <label id="preguntando">Pensabas en un/a {{ tree }} ?</label>
+            <input type="button" value="NO" onclick="toggleForm()">
+            <input type="button" value="SI" onclick="toggleLbl1()">
+            <label id="label1">Qué fácil! Adivinator Wins!</label>
+            <label id="label2">Tú ganas! registra tu animal!</label>
+            {% endif %}
             </div>
         </form>
-        <form class="Newanimal">
-            <div class="animalName">
+        <form id="Newanimal" action="/newanimal" method="post">
+            <div id="animalName">
             <label id="whatname">Cómo se llama el animal?</label>
-            <input type="text">
-            <input type="button" value="Enviar">
+            <input type="text" id="newname" name="newname" required>
             </div>
-            <div class="newDiferencia">
-            <label id="whatdifference">Que pregunta distinguiria a un X de un Y?</label>
-            <input type="text">
-            <input type="button" value="Enviar">
+            <div id="newDiferencia">
+            <label id="whatdifference">Que pregunta lo distinguiria de un {{ tree }} ?</label>
+            <input type="text" id="newdiff" name="newdiff" required>
             </div>
-            <div class="DiferenciaAns">
-            <label id="differenceans">Si el animal fuera un X cual sería la respuesta?</label>
-            <input type="button" value="SI">
-            <input type="button" value="NO">
+            <div id="DiferenciaAns">
+            <label id="differenceans">Si el animal fuera un {{ tree }} cual sería la respuesta?</label>
+            <input type="radio" name="newresp" id="newresp" value="NO" required> No
+            <input type="radio" name="newresp" id="newresp" value="SI" required> Si
             </div>
+            <input type="submit">
         </form>
     </div>
-
-{% include 'partials/footer.html' %}
+{% endblock %}

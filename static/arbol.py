@@ -14,10 +14,26 @@ class Arbol:
         self.root = node
 
 #   METODOS
-    def insertNodo(self, node):
-        if self.root is None:
-            self.root = node
+    def insertAnimal(self, name, diff, ind):
+        animal = self.getRoot()
+        self.setRoot(diff)
+        if ind == "NO":
+            self.getRoot().setLeft(animal)
+            self.getRoot().setRight(name)
+        else:
+            self.getRoot().setRight(animal)
+            self.getRoot().setLeft(name)
+
+    def recorrido(self):
+        while self.getRoot().getLeft() != None:
+            if si(arbol.carga + "? "):
+                arbol = arbol.izquierda
+            else:
+                arbol = arbol.derecha
 
     def getRaizData(self):
         n = self.root.getData()
         return n
+
+    def podar(self, n):
+        self.getRoot
