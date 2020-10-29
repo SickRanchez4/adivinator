@@ -34,6 +34,3 @@ class Arbol:
     def getRaizData(self):
         n = self.root.getData()
         return n
-
-    def podar(self, n):
-        self.getRoot
