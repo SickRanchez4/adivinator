@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block body %}
+    <section class="Adivinator">
+        <p class="titulo">¿Pensabas en <em>{{ nodo.data }}</em>?</p>
+        <div class="opciones">
+            <form action="{{ url_for('acierto') }}" method="post">
+                <button type="submit" class="btn">SÍ</button>
+            </form>
+            <a href="{{ url_for('fallo') }}" class="btn">NO</a>
+        </div>
+    </section>
+{% endblock %}

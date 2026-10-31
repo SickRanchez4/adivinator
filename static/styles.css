@@ -57,53 +57,95 @@ nav ul{
     font-weight: bold;
     margin-bottom: 70px;
 }
-#inicio{
-    margin-bottom: 40px;
-}
-#inicio input{
-    width: 100px;
-}
-#start{
+.titulo{
     display: block;
+    margin-bottom: 30px;
 }
-#pregunta{
-    margin-bottom: 40px;
-    display: none;
+.subtitulo{
+    font-size: 0.6em;
+    font-weight: normal;
+    margin-bottom: 30px;
 }
-#pregunta input{
-    width: 100px;
+.gana-maquina{ color: green; }
+.gana-jugador{ color: red; }
+.opciones{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
-#preguntando{
-    display: block;
+.btn{
+    display: inline-block;
+    width: 160px;
+    padding: 8px 0;
+    font-family: 'Righteous', cursive;
+    font-size: 0.6em;
+    color: black;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.4s;
 }
-#label1{
-    display: none;
-    color: green;
+.btn:hover{
+    color: white;
+    background-color: black;
 }
-#label2{
-    display: none;
-    color: red;
-}
-#Newanimal{
-    display: none;
-    font-size: 1.5em;
-}
-#Newanimal div{
+.flash{
+    font-size: 1.2em;
     margin-bottom: 20px;
 }
-#whatname{
-    display: block;
+.flash-error{ color: red; }
+#Newanimal{
+    font-size: 0.7em;
+    font-weight: normal;
 }
-
-#whatdifference{
-    display: block;
+#Newanimal div, #Newanimal fieldset{
+    margin-bottom: 20px;
+    border: none;
 }
-.DiferenciaAns input{
+#Newanimal label{
+    display: block;
+    margin-bottom: 8px;
+}
+#Newanimal fieldset label{
     display: inline-block;
-    width: 70px;
+    margin: 0 15px;
 }
-#differenceans{
-    display: block;
+#Newanimal input[type=text]{
+    width: min(400px, 90%);
+    padding: 6px;
+    font-family: inherit;
+}
+.arbol{
+    text-align: left;
+    display: inline-block;
+    margin-bottom: 70px;
+}
+.arbol .titulo, .arbol .subtitulo{
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.arbol .subtitulo{ font-size: 1em; font-weight: normal; }
+.arbol ul{
+    list-style: none;
+    margin-left: 25px;
+    border-left: 2px dashed black;
+    padding-left: 15px;
+}
+.arbol ul.raiz{ border: none; margin-left: 0; }
+.arbol li{ margin: 6px 0; }
+.arbol .pregunta{ font-weight: bold; }
+.arbol .rama{
+    font-family: 'Righteous', cursive;
+    font-size: 0.8em;
+    color: green;
+}
+.arbol .hoja{
+    background-color: white;
+    border-radius: 6px;
+    padding: 2px 8px;
 }
 
 .footer{

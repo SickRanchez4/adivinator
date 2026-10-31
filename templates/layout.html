@@ -1,34 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Fernando Quiroga Segobia">
-    <link rel="stylesheet" type="text/css" href="/static/styles.css"/>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}"/>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Righteous&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="/static/imgs/ball.ico"/>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='imgs/ball.ico') }}"/>
     <title>| Adivinator |</title>
 </head>
 <body>
     <header class="header">
-        <img src="/static/imgs/logo_adivinator.png">
+        <img src="{{ url_for('static', filename='imgs/logo_adivinator.png') }}" alt="Adivinator">
         <nav class="barnav">
             <ul>
-                <li><a class="navbtn" href="/">HOME</a></li>
-                <li><a class="navbtn" href="/about">ABOUT</a></li>
+                <li><a class="navbtn" href="{{ url_for('inicio') }}">HOME</a></li>
+                <li><a class="navbtn" href="{{ url_for('ver_arbol') }}">ÁRBOL</a></li>
+                <li><a class="navbtn" href="{{ url_for('about') }}">ABOUT</a></li>
             </ul>
         </nav>
     </header>
 
-    {% block body %}
-    {% endblock %}
-    
+    <main class="content">
+        {% with mensajes = get_flashed_messages(with_categories=true) %}
+            {% for categoria, mensaje in mensajes %}
+                <p class="flash flash-{{ categoria }}">{{ mensaje }}</p>
+            {% endfor %}
+        {% endwith %}
+        {% block body %}{% endblock %}
+    </main>
+
     <footer class="footer">
         <div>
             <h1>Contacto</h1><br/>
             Vfqs94@gmail.com<br/><br/>
             Fernando_qs@outlook.com
-
         </div>
         <div>
             <h1>Adivinator</h1><br/>
@@ -37,6 +43,5 @@
             2020
         </div>
     </footer>
-    <script src="/static/scripts.js"></script>
 </body>
 </html>

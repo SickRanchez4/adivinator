@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% macro pintar(nodo) -%}
+    <li>
+        {% if nodo.es_hoja() %}
+            <span class="hoja">{{ nodo.data }}</span>
+        {% else %}
+            <span class="pregunta">{{ nodo.data }}</span>
+            <ul>
+                <li><span class="rama">SÍ</span><ul>{{ pintar(nodo.right) }}</ul></li>
+                <li><span class="rama">NO</span><ul>{{ pintar(nodo.left) }}</ul></li>
+            </ul>
+        {% endif %}
+    </li>
+{%- endmacro %}
+{% block body %}
+    <section class="arbol">
+        <p class="titulo">El árbol binario de Adivinator</p>
+        <p class="subtitulo">{{ personajes|length }} personajes · altura {{ altura }}</p>
+        <ul class="raiz">{{ pintar(raiz) }}</ul>
+    </section>
+{% endblock %}

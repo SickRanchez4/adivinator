@@ -1,44 +1,10 @@
 {% extends "layout.html" %}
 {% block body %}
-    <div class="content">
-        <form class="Adivinator">
-            <div id="inicio">
-            <label id="start">ESTÁS PENSANDO EN UN ANIMAL?</label>
-            <input type="button" onclick="toggleQuest()" value="SI">
-            </div>
-            <div id="pregunta">
-            {% if tree.getRoot().getLeft() != None %}
-                <label id="preguntando">El animal {{ tree }} ?</label>
-                <form id="askin">
-                <input type="submit" value="NO" formaction="/goLeft"> <!-- /goLeft -->
-                <input type="submit" value="SI" formaction="/goRight"><!-- /goRight -->
-                </form>
-            {% endif %}
-
-            {% if tree.getRoot().getLeft() == None %}
-            <label id="preguntando">Pensabas en un/a {{ tree }} ?</label>
-            <input type="button" value="NO" onclick="toggleForm()">
-            <input type="button" value="SI" onclick="toggleLbl1()">
-            <label id="label1">Qué fácil! Adivinator Wins!</label>
-            <label id="label2">Tú ganas! registra tu animal!</label>
-            {% endif %}
-            </div>
+    <section class="Adivinator">
+        <p class="titulo">¿ESTÁS PENSANDO EN UN PERSONAJE?</p>
+        <p class="subtitulo">Conozco {{ total }} personaje{{ 's' if total != 1 }}. Si no lo adivino, me lo enseñas.</p>
+        <form action="{{ url_for('iniciar') }}" method="post">
+            <button type="submit" class="btn">SÍ, EMPECEMOS</button>
         </form>
-        <form id="Newanimal" action="/newanimal" method="post">
-            <div id="animalName">
-            <label id="whatname">Cómo se llama el animal?</label>
-            <input type="text" id="newname" name="newname" required>
-            </div>
-            <div id="newDiferencia">
-            <label id="whatdifference">Que pregunta lo distinguiria de un {{ tree }} ?</label>
-            <input type="text" id="newdiff" name="newdiff" required>
-            </div>
-            <div id="DiferenciaAns">
-            <label id="differenceans">Si el animal fuera un {{ tree }} cual sería la respuesta?</label>
-            <input type="radio" name="newresp" id="newresp" value="NO" required> No
-            <input type="radio" name="newresp" id="newresp" value="SI" required> Si
-            </div>
-            <input type="submit">
-        </form>
-    </div>
+    </section>
 {% endblock %}
