@@ -70,6 +70,7 @@ def create_app(config: dict | None = None) -> Flask:
             raiz=arbol.raiz,
             altura=arbol.altura(),
             personajes=arbol.personajes(),
+            nuevo=session.pop("ultimo_aprendido", None),
         )
 
     @app.post("/jugar/iniciar")
@@ -120,6 +121,7 @@ def create_app(config: dict | None = None) -> Flask:
             flash(str(exc), "error")
             return redirect(url_for("fallo"))
         session.pop("camino", None)
+        session["ultimo_aprendido"] = personaje.strip()
         return render_template(
             "resultado.html", gano_maquina=False, personaje=personaje.strip()
         )

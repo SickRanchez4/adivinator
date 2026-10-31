@@ -1,10 +1,11 @@
 {% extends "layout.html" %}
 {% block body %}
-    <section class="Adivinator">
-        <p class="titulo">{{ nodo.data }}</p>
+    <section class="card">
+        <div class="orb" aria-hidden="true"></div>
+        <h1 class="titulo" data-typewriter>{{ nodo.data }}</h1>
         <form action="{{ url_for('responder') }}" method="post" class="opciones">
             <button type="submit" name="respuesta" value="si" class="btn">SÍ</button>
-            <button type="submit" name="respuesta" value="no" class="btn">NO</button>
+            <button type="submit" name="respuesta" value="no" class="btn btn-no">NO</button>
         </form>
     </section>
 {% endblock %}
