@@ -1,15 +1,17 @@
 {% extends "layout.html" %}
 {% block body %}
-    <div class="bout">
-        <p><b>Adivinator</b>, tratará de adivinar lo que estas pensando.
-        Es un juego desarrollado para la materia de Estructura de Datos II
-        Impartida por el Ing. Juan Carlos Peinado
-        de la Universidad Autónoma Gabriel René Moreno (UAGRM).
-        <b>Adivinator</b>, está desarrolado en Python 3.8.2 
-        Y utiliza la Estructura de Datos 'Arbol Binario' para poder operar.
-        Tras una serie de preguntas, la máquina intentará adivinar lo q estas pensando.
-        Vence a la máquina y podras introducir nuevos personajes en el juego!
-        </p>
-    </div>
-
+    <section class="card bout">
+        <div class="orb" aria-hidden="true"></div>
+        <h1 class="titulo">¿Cómo funciona?</h1>
+        <p><b>Adivinator</b> tratará de adivinar lo que estás pensando.
+        Es un juego desarrollado para la materia de Estructura de Datos II,
+        impartida por el Ing. Juan Carlos Peinado
+        de la Universidad Autónoma Gabriel René Moreno (UAGRM).</p>
+        <p>Está desarrollado en Python y Flask, y utiliza la estructura de datos
+        <b>árbol binario de decisión</b>: cada nodo interno es una pregunta con una rama
+        <b>sí</b> y otra <b>no</b>, y cada hoja es un personaje.</p>
+        <p>Tras una serie de preguntas la máquina intentará adivinar lo que estás pensando.
+        Si vences a la máquina, tu personaje y la pregunta que lo distingue se insertan
+        en el árbol, que así crece con cada partida.</p>
+    </section>
 {% endblock %}

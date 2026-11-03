@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block body_attrs %}data-confetti="1"{% endblock %}
+{% block body %}
+    <section class="card {{ 'gana-maquina' if gano_maquina else 'gana-jugador' }}">
+        <div class="orb" aria-hidden="true"></div>
+        {% if gano_maquina %}
+            <h1 class="titulo" data-typewriter>¡Lo sabía! Era <em>{{ personaje }}</em>.</h1>
+            <p class="subtitulo">Adivinator gana esta ronda.</p>
+        {% else %}
+            <h1 class="titulo" data-typewriter>¡Aprendido! <em>{{ personaje }}</em> ya vive en mi árbol.</h1>
+            <p class="subtitulo">Cada derrota me hace más sabio.</p>
+        {% endif %}
+        <div class="opciones">
+            <form action="{{ url_for('iniciar') }}" method="post">
+                <button type="submit" class="btn">JUGAR DE NUEVO</button>
+            </form>
+            <a href="{{ url_for('ver_arbol') }}" class="btn btn-ghost">VER EL ÁRBOL</a>
+        </div>
+    </section>
+{% endblock %}

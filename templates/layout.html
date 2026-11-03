@@ -1,42 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Fernando Quiroga Segobia">
-    <link rel="stylesheet" type="text/css" href="/static/styles.css"/>
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Righteous&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="/static/imgs/ball.ico"/>
+    <meta name="theme-color" content="#05020f">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;700&family=Righteous&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}"/>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='imgs/ball.ico') }}"/>
     <title>| Adivinator |</title>
 </head>
-<body>
+<body {% block body_attrs %}{% endblock %}>
+    <div class="aurora" aria-hidden="true"></div>
+    <canvas id="particles" aria-hidden="true"></canvas>
+
     <header class="header">
-        <img src="/static/imgs/logo_adivinator.png">
+        <a href="{{ url_for('inicio') }}">
+            <img class="logo" src="{{ url_for('static', filename='imgs/logo_adivinator.png') }}" alt="Adivinator">
+        </a>
         <nav class="barnav">
             <ul>
-                <li><a class="navbtn" href="/">HOME</a></li>
-                <li><a class="navbtn" href="/about">ABOUT</a></li>
+                <li><a class="navbtn" href="{{ url_for('inicio') }}" {% if request.endpoint == 'inicio' %}aria-current="page"{% endif %}>HOME</a></li>
+                <li><a class="navbtn" href="{{ url_for('ver_arbol') }}" {% if request.endpoint == 'ver_arbol' %}aria-current="page"{% endif %}>ÁRBOL</a></li>
+                <li><a class="navbtn" href="{{ url_for('about') }}" {% if request.endpoint == 'about' %}aria-current="page"{% endif %}>ABOUT</a></li>
             </ul>
         </nav>
     </header>
 
-    {% block body %}
-    {% endblock %}
-    
+    <main class="content">
+        {% with mensajes = get_flashed_messages(with_categories=true) %}
+            {% for categoria, mensaje in mensajes %}
+                <p class="flash flash-{{ categoria }}">{{ mensaje }}</p>
+            {% endfor %}
+        {% endwith %}
+        {% block body %}{% endblock %}
+    </main>
+
     <footer class="footer">
         <div>
-            <h1>Contacto</h1><br/>
-            Vfqs94@gmail.com<br/><br/>
+            <h1>Contacto</h1>
+            Vfqs94@gmail.com<br/>
             Fernando_qs@outlook.com
-
         </div>
         <div>
-            <h1>Adivinator</h1><br/>
-            Desarrollado en: <br/>
-            Santa Cruz - Bolivia<br/>
-            2020
+            <h1>Adivinator</h1>
+            Desarrollado en Santa Cruz - Bolivia<br/>
+            Estructura de Datos II · UAGRM
         </div>
     </footer>
-    <script src="/static/scripts.js"></script>
+    <script src="{{ url_for('static', filename='scripts.js') }}" defer></script>
 </body>
 </html>

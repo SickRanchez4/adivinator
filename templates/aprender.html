@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block body %}
+    <section class="card gana-jugador">
+        <div class="orb" aria-hidden="true"></div>
+        <h1 class="titulo" data-typewriter>Me ganaste. Enséñame tu personaje.</h1>
+        <form id="Newanimal" action="{{ url_for('aprender') }}" method="post">
+            <div>
+                <label for="personaje">¿Cómo se llama?</label>
+                <input type="text" id="personaje" name="personaje" maxlength="60" required autofocus
+                       placeholder="Ej. Pikachu">
+            </div>
+            <div>
+                <label for="pregunta">¿Qué pregunta lo distingue de <em>{{ personaje_viejo }}</em>?</label>
+                <input type="text" id="pregunta" name="pregunta" maxlength="120"
+                       placeholder="Ej. ¿Lanza rayos?" required>
+            </div>
+            <fieldset>
+                <legend>Para tu personaje, la respuesta sería…</legend>
+                <div class="radios">
+                    <input type="radio" name="respuesta_nuevo" value="si" id="r-si" required>
+                    <label for="r-si">SÍ</label>
+                    <input type="radio" name="respuesta_nuevo" value="no" id="r-no" required>
+                    <label for="r-no">NO</label>
+                </div>
+            </fieldset>
+            <button type="submit" class="btn">GUARDAR EN EL ÁRBOL</button>
+        </form>
+    </section>
+{% endblock %}
